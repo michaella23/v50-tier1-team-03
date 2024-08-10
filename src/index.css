@@ -16,8 +16,9 @@
 
 .modal-box {
   /* display: none; */
-  width: 100px;
-  height: 100px;
+  /* width: 100px;
+  height: 100px; */
+  z-index: 100;
   background-color:white;
   color: black;
 }
