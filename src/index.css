@@ -14,6 +14,14 @@
 
 /* =========== MAIN STYLES =========== */
 
+.modal-box {
+  /* display: none; */
+  width: 100px;
+  height: 100px;
+  background-color:white;
+  color: black;
+}
+
 body {
   background-color: var(--main-bg);
   color: var(--main--text__dark);
