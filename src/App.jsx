@@ -20,19 +20,44 @@ function App() {
     addOns:[],
     amount: 0,
 })
-const param = useParams()
+// const param = useParams()
 
-function isItem(item){
-    return item.url === param.itemId
-}
+// function isItem(item){
+//     return item.url === param.itemId
+// }
 
-const menuItem = menu.meals.find(isItem) || menu.drinks.find(isItem)|| menu.desserts.find(isItem)
+  // const menuItem = menu.meals.find(isItem) || menu.drinks.find(isItem)|| menu.desserts.find(isItem)
 
+  let modal = ''
 
+  const showModal = (id) => {
+    setModalShowing(prevModalShowing => !prevModalShowing)
+    // const menuItem = menu.meals.find((item) => item.id == id) || 
+    //                   menu.drinks.find((item) => item.id == id)|| 
+    //                   menu.desserts.find((item) => item.id == id)
+    // console.log(menuItem.name)
 
+    //   modal =
+    //     <dialog style={{display}} className="modal-box">
+    //       <h1>{menuItem.name}</h1> 
+    //       <img src={menuItem.image} alt={menuItem.name} />
+    //       <h2>{menuItem.name}</h2>
+    //       <p>{menuItem.description}</p>
 
-  const showModal = () => setModalShowing(prevModalShowing => !prevModalShowing)
+    //       <Modifications 
+    //           modifications={menuItem.modifiers} 
+    //           item={item}
+    //           setItem={setItem}/>
 
+    //       <Options 
+    //           addOns={menuItem.addOns} 
+    //           item={item}
+    //           setItem={setItem}/>
+
+    //       <AmountAddToCart />
+    //     </dialog>
+    // console.log(modal)
+  }
 
   const display = modalShowing ? "block" : "none"
 
@@ -55,6 +80,35 @@ const menuItem = menu.meals.find(isItem) || menu.drinks.find(isItem)|| menu.dess
                 <p>{item.price}</p>
             </div>
             <button onClick={() => showModal()}>click me</button>
+            <div style={{display}}>{item.modifiers}</div>
+            <div style={{display}}>{item.addOns}</div>
+            <div style={{display}}>
+            <button className="quantity-btn">
+               {/* onClick={handleAmountDecrease} */}
+                {/* <div> */}
+                    -
+                {/* </div>  */}
+            </button>
+            <span className="item-amount">{item.amount}</span>
+            <button className="quantity-btn">
+            {/* onClick={handleAmountIncrease} */}
+                {/* <div> */}
+                      +
+                {/* </div> */}
+            </button>
+            <button className="add-to-cart-btn">Add to Cart | ${item.price*item.amount}</button>
+        </div>
+          {/* <Modifications 
+              modifications={menuItem.modifiers} 
+              item={item}
+              setItem={setItem}/>
+
+          <Options 
+              addOns={menuItem.addOns} 
+              item={item}
+              setItem={setItem}/> */}
+
+          {/* <AmountAddToCart/> */}
           </div>
         // </Link>
       )
@@ -73,25 +127,7 @@ const menuItem = menu.meals.find(isItem) || menu.drinks.find(isItem)|| menu.dess
       <FeaturedItem />
       <MenuNav/>
       <main>
-        {modalShowing && 
-          <dialog style={{display}} className="modal-box">
-            <h1>{menuItem.name}</h1> 
-            <img src={menuItem.image} alt={menuItem.name} />
-            <h2>{menuItem.name}</h2>
-            <p>{menuItem.description}</p>
-
-            <Modifications 
-                modifications={menuItem.modifiers} 
-                item={item}
-                setItem={setItem}/>
-
-            <Options 
-                addOns={menuItem.addOns} 
-                item={item}
-                setItem={setItem}/>
-
-            <AmountAddToCart />
-          </dialog>}
+        {modalShowing && modal}
         <Section 
           className="meals-section"
           id="bbq-meals" 
